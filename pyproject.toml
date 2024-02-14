@@ -1,13 +1,15 @@
 [tool.poetry]
-name = "vidvort_api"
+name = "vidvort"
 version = "0.1.0"
-description = ""
+description = "Monorepo for VidVort"
 authors = ["theharshpat <harsh.patel.magic105@gmail.com>"]
+readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
 fastapi = "^0.109.2"
 uvicorn = "^0.27.1"
+python-multipart = "^0.0.9"
 
 
 [build-system]
