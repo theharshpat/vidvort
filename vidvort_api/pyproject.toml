@@ -1,12 +1,13 @@
 [tool.poetry]
-name = "vidvort-api"
+name = "vidvort_api"
 version = "0.1.0"
 description = ""
 authors = ["theharshpat <harsh.patel.magic105@gmail.com>"]
-readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.11"
+fastapi = "^0.109.2"
+uvicorn = "^0.27.1"
 
 
 [build-system]
