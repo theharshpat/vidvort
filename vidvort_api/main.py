@@ -3,6 +3,7 @@ from string import ascii_lowercase
 from fastapi import FastAPI, UploadFile
 import uvicorn
 from pathlib import Path
+import subprocess
 
 app = FastAPI()
 
@@ -10,8 +11,8 @@ app = FastAPI()
 async def read_root():
     return {"Hello": "World"}
 
-@app.post("/upload-video")
-async def create_upload_video(file: UploadFile = None):
+@app.post("/videos")
+async def create_video(file: UploadFile = None):
     if file is None:
         return {"filename": "No file"}
 
@@ -23,7 +24,15 @@ async def create_upload_video(file: UploadFile = None):
     with file_path.open("wb") as buffer:
         buffer.write(file.file.read())
 
-    return {"filename": file_name}
+    return {"video_id": file_name}
+
+@app.post("/videos/{video_id}/transcode")
+async def transcode_video(video_id: str):
+    target_path = Path("files/transcoded") / video_id
+    subprocess.run(f"rm -f {target_path}", shell=True)
+    command = f"ffmpeg -i files/uploads/{video_id} -c:v h264_videotoolbox -c:a aac -preset medium -vf 'scale=-2:480' -b:v 1000k -b:a 128k files/transcoded/{video_id}"
+    subprocess.run(command, shell=True)
+    return { "status": "success" }
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
