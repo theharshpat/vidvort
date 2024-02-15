@@ -9,6 +9,8 @@ Upload videos, automate transcoding, and manage workflows with ease. Designed fo
 - [ ] Upload validation to check if file is a video 
 - [ ] Job status table - on upload return ID and trigger based on ID instead of file name
 - [ ] API to list jobs with their status
+- [ ] Video encoder - hardware acceleration based on system(OS, GPU available - macos, nvidia gpu etc)
+- [ ] Containerization - Dockerfile and docker-compose
 - [ ] Event driven queue for transcoding jobs
 - [ ] Support multiple transcodes in a single trigger
 - [ ] Time estimations based on popular format/resolution conversions
