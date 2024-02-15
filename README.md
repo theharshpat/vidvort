@@ -11,3 +11,4 @@ Upload videos, automate transcoding, and manage workflows with ease. Designed fo
 - [ ] API to list jobs with their status
 - [ ] Event driven queue for transcoding jobs
 - [ ] Support multiple transcodes in a single trigger
+- [ ] Time estimations based on popular format/resolution conversions
