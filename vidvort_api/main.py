@@ -15,6 +15,9 @@ async def read_root():
 async def create_video(file: UploadFile = None):
     if file is None:
         return {"filename": "No file"}
+    
+    if file.content_type not in ["video/mp4", "video/avi", "video/mov", "video/mkv", "video/flv", "video/quicktime", "video/webm", "video/3gpp"]:
+        return {"error": "Invalid file type"}
 
     random_str_10 = ''.join(choice(ascii_lowercase) for i in range(5))
 
